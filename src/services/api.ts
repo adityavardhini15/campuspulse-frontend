@@ -1,14 +1,10 @@
 import axios from 'axios'
 import { getToken } from '../utils/tokenUtils'
 
-const baseURL = import.meta.env.VITE_API_URL 
-  ? `${import.meta.env.VITE_API_URL}/api`
-  : 'https://campuspulse-backend-nvvn.onrender.com/api'
-
-console.log('API Base URL:', baseURL) // Debug log
-
 const api = axios.create({
-  baseURL
+  baseURL: import.meta.env.VITE_API_URL 
+    ? `${import.meta.env.VITE_API_URL}/api`
+    : 'https://campuspulse-backend-nvvn.onrender.com/api'
 })
 
 api.interceptors.request.use((config) => {
